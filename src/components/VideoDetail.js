@@ -1,12 +1,17 @@
 import React from 'react'
 
 const VideoDetail =({video})=>{
+    if (!video) {
+        return <div>Loading...</div>;
+      }
+    
+      const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
     
     //conditional rendering short circuit approach
-    return video  && <div className='ui segment'>
+    return <div className='ui segment'>
                         <div className="ui embed">
                             <iframe width="560" height="315" 
-                            src={`https://www.youtube.com/embed/${video.id.videoId}?autoplay=1`}
+                            src={videoSrc}
                             title="YouTube video player" frameBorder="0"
                             allowFullScreen>
                             </iframe>
